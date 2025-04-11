@@ -26,21 +26,10 @@ pipeline {
             
             steps {
                     script {
-                        def releaseName = "ingress"
-                        def namespace = "default"
-
-                        def isInstalled = sh(
-                            script: "helm list -n ${namespace} -q | grep -w ${releaseName} || true",
-                            returnStdout: true
-                        ).trim()
-
-                        if (isInstalled) {
-                            echo "Helm release '${releaseName}' is already installed."
-                            sh 'helm upgrade ingress ingress'
-                        } else {
-                            echo "Helm release '${releaseName}' is not installed. Installing now..."
-                            sh 'helm install ingress ingress'
-                        }
+                        
+                            
+                            sh 'helm upgrade --install ingress ingress'
+                        
                     }
             }   
         }

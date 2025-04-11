@@ -1,0 +1,22 @@
+ingress:
+  enabled: true
+  name: microservice-ingress
+  ingressClassName: nginx
+  frontend:
+    enabled: true
+    path: /
+    pathType: Prefix
+    name: frontend
+    port: 80
+  product:
+    enabled: true
+    path: /products
+    pathType: Prefix
+    name: product-service
+    port: 5002
+  user: 
+    enabled: true
+    path: /users
+    pathType: Prefix
+    name: user-service
+    port: 5001
